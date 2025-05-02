@@ -24,7 +24,7 @@ import Item from "./components/Items/Page"
     <Route path={'s'} element={<S/>}/>
     <Route path={'m'} element={<Reader/>}/>
 
-      <Route path='/Home' element={<Layouts/>}>
+      <Route path='/' element={<Layouts/>}>
       
       <Route index element={<Home/>}/>
       <Route path={'/Home/:id'} element={<Item/>}/> 
