@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notification Test</title>
+</head>
+<body>
+
+  <button onclick="showNotification()">Show Notification</button>
+
+  <script>
+    function showNotification() {
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notifications.");
+        return;
+      }
+
+      if (Notification.permission === "granted") {
+        new Notification("Hello!", { body: "This is a notification." });
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            new Notification("Hello!", { body: "This is a notification." });
+          } else {
+            alert("Notification permission denied.");
+          }
+        });
+      } else {
+        alert("Notification permission was denied previously.");
+      }
+
+      // Notification.requestPermission().then(perm=>{
+      //   console.log("suleian")
+        
+      //  return new Notification("hello",{
+      //     body:"suleiman",
+      //     data:{hello:"mans"},
+      //     // icon:""
+      //   })
+      // })
+    }
+  </script>
+
+</body>
+</html>
