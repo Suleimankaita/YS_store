@@ -15,17 +15,21 @@ import Usechange_title from "../../hooks/Usechange_title"
 import { BiCurrentLocation} from "react-icons/bi"
 import { useDispatch } from "react-redux"
 import { Add_card } from "../../features/funcSlice"
-import { FaHeart,FaRegSave } from "react-icons/fa"
-import { BiHeart as Heart,BiSave as Save,BiMessage,BiComment } from "react-icons/bi"
+import { FaHeart,FaBookmark as FaRegSave } from "react-icons/fa"
+import { BiHeart as Heart,BiBookmark as Save,BiMessage,BiComment } from "react-icons/bi"
 import { Icons, toast,ToastContainer } from "react-toastify"
 import Swal from "sweetalert2"
+import { commentss } from "../../features/funcSlice"
+import Comment_section from "./comment"
+import { useSelector } from "react-redux"
 const Item_section_1 = () => {
     const dispatch=useDispatch()
     const socket=useRef(null)
     const videos=useRef(null)
     Usechange_title({titles:"items"})
-
-    useEffect(()=>{
+    const [comment,setcomment]=useState(false)
+    const com_count=useSelector(commentss)
+      useEffect(()=>{
         if(!socket.current) {
             socket.current=io("localhost:4000")
         }
@@ -43,6 +47,8 @@ const Item_section_1 = () => {
     
         // man()
 
+        
+
         socks.off("connection").on("connection",(sockets)=>{
             console.log(sockets)
         })
@@ -53,6 +59,7 @@ const Item_section_1 = () => {
         }
 
     },[])
+
 
     const [ms,setms]=useState("")
 
@@ -120,11 +127,12 @@ const Item_section_1 = () => {
     const [disavailable,setdisavailable]=useState(available)
     const re=items.filter(ress=>ress.color===ms?.color)
 
+    const comfunc=()=>setcomment(prev=>!prev)
+
     const content=(
           
 
             re.map(res=>{
-                // console.log(re[0])
                 return(
                 <div onMouseEnter={()=>setms(res)} className="msa" key={res.id}>
                         <img src={res.img} alt={res.name} width={"70px"} height={"70px"} />
@@ -136,7 +144,7 @@ const Item_section_1 = () => {
     const content2=(
         
         items.slice(0,3).map(res=>(
-                <div style={{margin:"10px"}} onClick={()=>setms(res)} className="msa" key={res.id}>
+                <div style={{margin:"5px"}} onClick={()=>setms(res)} className="msa" key={res.id}>
                         <img src={res.img} alt={res.name} width={"70px"} height={"70px"} />
                 </div>
             )) 
@@ -168,26 +176,6 @@ const Item_section_1 = () => {
     }
    
     const [count,setcount]=useState(1);
-
-    useEffect(()=>{
-
-        // const man=async()=>{
-
-        //     const noti=await Notification.requestPermission()
-        //     if(noti==="granted"){
-        //         noti({
-        //             body:"welcome"
-        //         })
-        //     }else{
-        //         alert("not granted")
-
-        //     }
-        // }
-        // man()
-    
-    
-    },[])
-
     const [bolcheck,setbolcheck]=useState(false)
 
     const inc=()=>{
@@ -298,15 +286,15 @@ const Item_section_1 = () => {
             </div>
 
             <div className="heart">
-            <BiComment className="hearts"/>
-            <span>{0}</span>
+            <BiComment onClick={comfunc} className="hearts"/>
+            <span>{com_count}</span>
             </div>
 
             <div className="heart">
                 
             {save?<Save className="hearts" onClick={()=>saves(ms?.id)}/>:<FaRegSave onClick={()=>{
                 unsaves(ms?.id)
-                }} color="skyblue" className="hearts"/>}
+                }} color="gray" className="hearts"/>}
                 <span>{countsave}</span>
             </div>
             
@@ -315,26 +303,40 @@ const Item_section_1 = () => {
         </div>
     )
 
+    const comments=comment?<Comment_section comfunc={comfunc} toast={toast} />:null
+
+
+
     return (
-    <main className="item_con1">
+    <main className="item_con1" style={{position:"relative"}}>
         <ToastContainer/>
+
         <div className="item_con2">
+
+        <div className="mst">
+
 
         <div className="block">
 
         {content}
         </div>
+
         <div className="losa">
         <div onMouseLeave={mouse_out} onMouseMove={(e)=>handlemouse(e)} className="img_bg" style={{backgroundImage:`url(${ms.img})`, 
-        backgroundPosition: `${x*1}px ${Y}%`, backgroundSize:"cover", backgroundRepeat:"no-repeat",    
+       backgroundPosition: `${x*1}px ${Y}%`, backgroundSize:"cover", backgroundRepeat:"no-repeat",    
         }}>
         </div>
         </div>
+       
+
+
+        </div>
+
 
         <div className="decr">
         {/* <div className="item_name"> */}
             {/* </div> */}
-        <div className="item_description">
+        <div className="item_descri ption">
                 <h3>₦{Number(ms?.price).toLocaleString()}</h3>
                 <h2>{ms?.name}</h2>
                 
@@ -363,6 +365,10 @@ const Item_section_1 = () => {
              <span>|</span>
              <span>200+sold</span> 
             </div>
+            <div className="block2">
+
+{content}
+</div>
             <br />
             <hr />
                 <br />
@@ -371,6 +377,7 @@ const Item_section_1 = () => {
                         {content2}
                     </div>
             </div>
+
             <div className="boder_cart">
                 <div className="prices_Cart">
 
@@ -420,7 +427,9 @@ const Item_section_1 = () => {
 
             </div>
             </div>
+        {comments}
         </div>
+
 
         {/* <img onMouseMove={(e)=>handlemouse(e)} src={ms.img} alt="" width={"50%"} height={"350px"} /> */}
         {/* <div className="block">

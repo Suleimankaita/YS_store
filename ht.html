@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notification Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-
-  <button onclick="showNotification()">Show Notification</button>
-
+  <button onclick="ms()">click</button>
   <script>
-    function showNotification() {
-      if (!("Notification" in window)) {
-        alert("This browser does not support desktop notifications.");
-        return;
-      }
+    const ms=async()=>{
 
-      if (Notification.permission === "granted") {
-        new Notification("Hello!", { body: "This is a notification." });
-      } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-          if (permission === "granted") {
-            new Notification("Hello!", { body: "This is a notification." });
-          } else {
-            alert("Notification permission denied.");
-          }
-        });
-      } else {
-        alert("Notification permission was denied previously.");
-      }
+      const noti=await Notification.requestPermission();
+      if(noti!=='granted') return;
+      const notification = new Notification('Title', {
+        body: 'This is the body of the notification.',
+        silent:false,
+        data:{hs:"suleiman"}
+        // icon: 'https://example.com/icon.png' // Replace with your icon URL
+      });
+      notification.onclick = function(event) {
+        event.preventDefault(); // Prevent the browser from focusing the Notification's tab
+        window.open('https://example.com'); // Replace with your desired URL
+      };
+      console.log("msd")
+      setTimeout(() => {
+        notification.close(); // Close the notification after 5 seconds
+      }, 5000); // 5000 milliseconds = 5 seconds
 
-      // Notification.requestPermission().then(perm=>{
-      //   console.log("suleian")
-        
-      //  return new Notification("hello",{
-      //     body:"suleiman",
-      //     data:{hello:"mans"},
-      //     // icon:""
-      //   })
-      // })
+      
     }
   </script>
-
 </body>
 </html>

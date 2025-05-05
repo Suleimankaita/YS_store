@@ -4,6 +4,7 @@ const initialState =
     {
         auth: null,
         user: null,
+        comment: 0,
         Cart:JSON.parse(localStorage.getItem("Cart"))||[],
     }
 
@@ -22,6 +23,9 @@ const initialState =
         },
         setuser: (state, action) => {
             state.user = action.payload;
+        },
+        setcom: (state, action) => {
+            state.comment = action.payload;
         },
         Add_card:(state,action)=>{
            
@@ -100,7 +104,8 @@ const initialState =
 
 });
 
-export const { setlogin, setuser ,setlogout,Add_card,dec,deleteAll,dele} =postslice.actions;
+export const { setlogin, setuser,setcom ,setlogout,Add_card,dec,deleteAll,dele} =postslice.actions;
 
 export const carts=(state=>state.auth.Cart)
+export const commentss=(state=>state.auth.comment)
 export default postslice.reducer;

@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import Component from './component'
 import img1 from "../../assets/img/com.jpeg"
 import img2 from "../../assets/img/head.jpeg"
+import { Link } from 'react-router-dom'
 
 const Functions = () => {
   

@@ -90,5 +90,35 @@ p {
     <h2>Section 3</h2>
     <p>The third section appears last with a smooth fade-in effect.</p>
   </section>
+
+  <script>
+
+      const arr=[11,11,2,3,4,5,6]
+
+      const find=arr.filter((item,_)=>{
+
+        const all=arr.indexOf(_)!==item;
+        
+        if(all){
+          const alerts=confirm("this item is already exist do you want replace it " + item)
+        
+
+                if(alerts){
+                  
+                  return confirm("replaced by "+item)
+                  
+                }else{
+                 return confirm("canceled the destination",item)
+                
+                }
+                
+              }else{
+                return 
+              }
+            
+      })
+
+  </script>
+
 </body>
 </html>

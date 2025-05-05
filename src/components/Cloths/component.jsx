@@ -3,6 +3,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { Add_card } from '../../features/funcSlice'
 import { FaShoppingCart } from 'react-icons/fa'
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 const Component = ({product}) => {
@@ -17,30 +18,30 @@ const Component = ({product}) => {
         
           <Suspense fallback={<p>loading....</p>}>
               {product.map(res=>(
-                    <motion.div
-                  //   ref={ref}
-                    className='product_con'
-                  //   style={{
-                  //     scale,
-                  //     opacity,
-                  //   }}
-                    key={res.id}
-                  >
-                  {/* <div className='product_con'> */}
-  
-                  <img src={res?.img} width={"100%"} height={"200px"}/>
-                  <div className="prices">
-  
-                  <h2>{res.name}</h2>
-                  <span>{res?.title ?`${res.title.substring(0,30)}....`:res?.title}</span>
-                  <h3>₦{res?.price}</h3>
-                  </div>
-                  <div className="shops">
-  
-                  <FaShoppingCart className='cs' onClick={()=> dispatch(Add_card(res))}/>
-                  </div>
-                  {/* </div> */}
-              </motion.div>
+                <Link to={`/Home/${res.id}`} style={{color:"black"}}
+                                //   ref={ref}
+                                  className='product_con'
+                                //   style={{
+                                //     scale,
+                                //     opacity,
+                                //   }}
+                                  key={res.id}
+                                >
+                                {/* <div className='product_con'> */}
+                
+                                <img src={res?.img} width={"100%"} height={"200px"}/>
+                                <div className="prices">
+                
+                                <h2>{res.name}</h2>
+                                <span>{res?.title ?`${res.title.substring(0,30)}....`:res?.title}</span>
+                                <h3>₦{res?.price}</h3>
+                                </div>
+                                {/* <div className="shops">
+                
+                                <FaShoppingCart className='cs' onClick={()=> dispatch(Add_card(res))}/>
+                                </div> */}
+                                {/* </div> */}
+                            </Link>
               ))}
           </Suspense>
   
