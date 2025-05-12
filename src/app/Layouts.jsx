@@ -1,5 +1,5 @@
 import React, { useEffect, useState,useRef } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet,NavLink } from "react-router-dom";
 import { FaShoppingCart,FaLessThan } from "react-icons/fa";
 import Nav from "./Nav";
 import { useSelector,useDispatch } from "react-redux";
@@ -11,7 +11,6 @@ import Fotter from "./Fotter"
 import logo from "../assets/img/logo1.png"
 import { useNavigate,useLocation ,useParams} from "react-router-dom";
 import { changetheame,theame } from "../features/funcSlice";
-
 import theamess from "../hooks/theame";
 const Layouts = () => {
 
@@ -130,14 +129,16 @@ const Layouts = () => {
        <li style={{transform:"translate(-10px,-5px)"}}>{back}</li> 
       </div> */}
         <img src={logo} alt="" width={"50px"} height={"50px"} style={{borderRadius:"50%",marginLeft:"10px"}} />
-        <li className="shoping_card nons" onClick={show} style={{marginRight:"10px"}}>    
+        <li className="shoping_card nons"  style={{marginRight:"10px"}}>    
                           
-                          <div className="crd">
+        <NavLink to="/cart">
+                          <div className="crd"  >
 
-                      <span className='count'>{select.length}</span>
+                      <span  className='count'>{select.length}</span>
                           </div>
-                      <FaShoppingCart fontSize={20} color='rgb(49, 137, 253)'/>
+                      <FaShoppingCart  fontSize={20} color='rgb(49, 137, 253)'/>
 
+                  </NavLink>
                       </li>
                       <li>
                     {theames?<FaSun onClick={changes} />:<FaMoon onClick={changes} />}
@@ -145,7 +146,7 @@ const Layouts = () => {
        <nav style={theames&&window.innerWidth<=900?all:null}>
 
         <ul>
-          <li>Home</li>
+         <NavLink to="/"> <li>Home</li></NavLink>
           <li className="cas">search</li>
           <li>All Categories</li>
           <li>Settings</li>
@@ -153,15 +154,17 @@ const Layouts = () => {
 
                 <div className="sws">
                   <li className="shoping_card cas "
-                   style={path==="/Company"?{display:"none"}:path==="/Shopping%20mall"?{display:"none"}:{display:"flex"}} onClick={show}
+                  
+                   style={path==="/Company"?{display:"none"}:path==="/Shopping%20mall"?{display:"none"}:{display:"flex"}} 
                   >    
-                          
+                  <NavLink to="/cart">
                           <div className="crd"  >
 
                       <span  className='count'>{select.length}</span>
                           </div>
                       <FaShoppingCart  fontSize={20} color='rgb(49, 137, 253)'/>
 
+                  </NavLink>        
                       </li>
                   </div>        
 

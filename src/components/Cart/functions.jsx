@@ -154,7 +154,7 @@ const Functions = () => {
                   <>
                   
                   
-                    <div className="prices_Cart">
+                    <div style={all} className="prices_Cart">
 
                       <h2>Summary</h2>
      
@@ -163,20 +163,23 @@ const Functions = () => {
                 <div className="cart_imgs">
       {
       arr.map(res=>
-        <img style={{margin:"5px"}} src={res?.img} alt={res.name} key={res?.id} width={"100px"} height={"100px"} />
+        <div key={res?.id} className="check_img">
+          <div className="check_good"></div>
+        <img style={{margin:"1px"}} src={res?.img} alt={res.name}  width={"100px"} height={"100px"} />
+        </div>
       )}
       </div>
      
-                <div className="item_total">
+                <div style={all} className="item_total">
       <h3>items total</h3>
       <h3>₦{Number(arr.reduce((sum,prev)=>sum+prev.price*prev.quantity,0)).toLocaleString()}</h3>
      </div>
-                <div className="item_total">
+                <div style={all} className="item_total">
       <h3>Shipping Cost</h3>
       <h3>₦{Number(arr.reduce((sum,prev)=>sum+prev.price*prev.quantity/2,0)).toLocaleString()}</h3>
 
      </div>
-                <div className="btn_cart">
+                <div style={all} className="btn_cart">
                     <button className='btn_cart1'>proceed to checkout</button>
                     <button onClick={()=>dips(deleteAll())} className='btn_cart2'>Delete All items</button>
                 </div>
@@ -193,7 +196,7 @@ const Functions = () => {
     </main>
     ):(
       <div style={{textAlign:"center",marginTop:"20px",display:"flex",flexDirection:"column",height:"100vh",justifyContent:"center",alignItems:"center"}}>
-                      <img src={empty} alt="" height={"50%"} width={"50%"} />
+                      <img src={empty} alt="" height={"50%"} width={"100%"} />
                       <h2>your cart is empty</h2>
                       <p>add items to your cart</p>
                     </div>
