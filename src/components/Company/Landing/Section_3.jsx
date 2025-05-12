@@ -1,24 +1,25 @@
 import React from 'react'
-
+import Theamess from '../../../hooks/theame'
 const Section_3 = () => {
+  const {all}=Theamess()
   return (
-    <section className='section_3'>
-        <div className="fl_sec3">
+    <section className='section_3' style={all}>
+        <div className="fl_sec3" style={all}>
         
-        <div className="secs1">
+        <div className="secs1" style={all}>
             <h1>Unlock Your Business Potential With Out E-commerce Platform</h1>
             <p>Estabilishing your shop on our platform means grater visibiity and stramlined management. Reach avast audiance eager to discover your products</p>
     <br />
     <br />
     
-            <div className="fls">
-          <div className="ds">
+            <div className="fls" style={all}>
+          <div className="ds" style={all}>
 
               <h3>Increased Visibiity</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam! Possimus.</p>
           </div>
          
-         <div className="ds">
+         <div className="ds" style={all}>
 
           <h3>Easy Management</h3>
          
@@ -29,7 +30,7 @@ const Section_3 = () => {
 
        
 
-        <div className="secs2">
+        <div className="secs2" style={all}>
         
         
         </div>
@@ -37,8 +38,8 @@ const Section_3 = () => {
         </div>
         <br />
         <br />
-        <div className="Company_features">
-          <div className="mx_company">
+        <div className="Company_features" style={all}>
+          <div className="mx_company" style={all}>
 
             <h1>Long headings is what you see here in this <br /> feature section</h1>
            <div className="mx_pic">

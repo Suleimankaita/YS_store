@@ -1,9 +1,9 @@
 import { apislice } from "../api/apislice";
 import { createEntityAdapter,createSelector } from "@reduxjs/toolkit";
 
-const postadapter = createEntityAdapter({});
+const postadapter = createEntityAdapter();
 
-const initialState = postadapter.getInitialState({});
+const initialState = postadapter.getInitialState();
 
 export const postslice=apislice.injectEndpoints({
 

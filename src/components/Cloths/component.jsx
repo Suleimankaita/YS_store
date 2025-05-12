@@ -4,8 +4,8 @@ import { Add_card } from '../../features/funcSlice'
 import { FaShoppingCart } from 'react-icons/fa'
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-
+import Theamess from '../../hooks/theame';
+import { theame } from '../../features/funcSlice';
 const Component = ({product}) => {
 
   useEffect(()=>{
@@ -13,12 +13,14 @@ const Component = ({product}) => {
   },[])
   const dispatch=useDispatch()
 
+  const {all}=Theamess()
+  const theames=useSelector(theame);
 
       const content=(
         
           <Suspense fallback={<p>loading....</p>}>
               {product.map(res=>(
-                <Link to={`/Home/${res.id}`} style={{color:"black"}}
+                <Link to={`/Home/${res.id}`} style={theames?all:{color:"black"}}
                                 //   ref={ref}
                                   className='product_con'
                                 //   style={{
@@ -48,12 +50,12 @@ const Component = ({product}) => {
       );
 
   return (
-  <section className='Products'>
-        <div className="child_pro">
-    <div className="explore">
-        <div className="explore1">
+  <section className='Products'style={all}>
+        <div className="child_pro" style={all}>
+    <div className="explore" style={all}>
+        <div className="explore1" style={all}>
 
-    <div className="product_head">
+    <div className="product_head" style={all}>
 
         <h4>Discover</h4>
         <h3>Products</h3>
@@ -64,7 +66,7 @@ const Component = ({product}) => {
             <button className='View_all'>View All</button>
         </div> */}
     </div>
-    <main className="Product">
+    <main className="Product" style={all}>
         {content}
     </main>
     

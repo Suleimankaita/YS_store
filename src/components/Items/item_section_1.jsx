@@ -22,9 +22,11 @@ import Swal from "sweetalert2"
 import { commentss } from "../../features/funcSlice"
 import Comment_section from "./comment"
 import { useSelector } from "react-redux"
+import Theamess from "../../hooks/theame"
 const Item_section_1 = () => {
     const dispatch=useDispatch()
     const socket=useRef(null)
+    const {all}=Theamess()
     const videos=useRef(null)
     Usechange_title({titles:"items"})
     const [comment,setcomment]=useState(false)
@@ -207,7 +209,7 @@ const Item_section_1 = () => {
 
   
     const btns=(
-        <div className={"btn_parents"}>
+        <div className={"btn_parents"} style={all}>
             <button onClick={dec} disabled={count <=1}>-</button>
            
             <span>{count}</span>
@@ -311,17 +313,17 @@ const Item_section_1 = () => {
     <main className="item_con1" style={{position:"relative"}}>
         <ToastContainer/>
 
-        <div className="item_con2">
+        <div className="item_con2" style={all}>
 
-        <div className="mst">
+        <div className="mst" style={all}>
 
 
-        <div className="block">
+        <div className="block" style={all}>
 
         {content}
         </div>
 
-        <div className="losa">
+        <div style={all} className="losa">
         <div onMouseLeave={mouse_out} onMouseMove={(e)=>handlemouse(e)} className="img_bg" style={{backgroundImage:`url(${ms.img})`, 
        backgroundPosition: `${x*1}px ${Y}%`, backgroundSize:"cover", backgroundRepeat:"no-repeat",    
         }}>
@@ -333,7 +335,7 @@ const Item_section_1 = () => {
         </div>
 
 
-        <div className="decr">
+        <div style={all} className="decr">
         {/* <div className="item_name"> */}
             {/* </div> */}
         <div className="item_descri ption">
@@ -378,13 +380,13 @@ const Item_section_1 = () => {
                     </div>
             </div>
 
-            <div className="boder_cart">
+            <div style={all} className="boder_cart">
                 <div className="prices_Cart">
 
             <h3>₦{Number(ms?.price*count).toLocaleString()}</h3>
                 </div>
 
-                <div className="cart_span">
+                <div style={all} className="cart_span">
 
                 <p>Sold by</p>
                 <p>YS store</p>

@@ -1,9 +1,11 @@
 import React from 'react'
 import {BiEnvelope,BiPhone,BiSolidEditLocation,BiRightArrow,BiDownArrow} from "react-icons/bi"
 import { useState } from 'react'
+import Theamess from '../hooks/theame'
+
 const Contact = () => {
   const [open,setopen]=useState(false)
-
+  const {all}=Theamess()
   const alls=[{
     name:"skleima",
   },
@@ -20,7 +22,7 @@ const Contact = () => {
       <dd>Near barhim esatate Katsina</dd>
     </address>
     <br />
-    <iframe src="https://maps.google.com/maps?q=katsina+barhim&output=embed" 
+    <iframe  src="https://maps.google.com/maps?q=katsina+barhim&output=embed" 
     loading="lazy" allowfullscreen
     frameborder="0" style={{width:"80%", height:"50vh", position:"absolute"}} ></iframe>
    
@@ -30,7 +32,7 @@ const Contact = () => {
   )
 
   return (
-    <section className='contact_us'>
+    <section className='contact_us' style={all}>
         <div className="tag_line">
 
         <h3>Tagline</h3>
@@ -60,7 +62,7 @@ const Contact = () => {
       <div>{open?address:""}</div>
             </div>
 
-<div className="contact_img"></div>
+<div className="contact_img" style={all}></div>
 
         </div>
     </section>

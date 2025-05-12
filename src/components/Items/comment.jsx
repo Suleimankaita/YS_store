@@ -10,9 +10,12 @@ import Swal from 'sweetalert2';
 import { FaHeart,FaRegSave } from "react-icons/fa"
 import { BiHeart as Heart,BiSave as Save,BiMessage,BiComment } from "react-icons/bi"
 import { div } from '@tensorflow/tfjs';
-
+import Theamess from '../../hooks/theame';
+import {formatDistanceToNow,parseISO} from "date-fns"
 
 const Comment = ({comfunc,toast}) => {
+
+  const {all}=Theamess()
 
   const [arr,setarr]=useState([
     {
@@ -20,7 +23,8 @@ const Comment = ({comfunc,toast}) => {
       name:"suleiman",
       title:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi recusandae pariatur assumenda impedit consequatur rerum sed! Esse, ut? Alias, consequuntur?",
       like:4,
-      seen:false
+      seen:false,
+      datetime:new Date().toISOString()
 
     },
     {
@@ -28,7 +32,9 @@ const Comment = ({comfunc,toast}) => {
       name:"yusuf",
       title:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi recusandae pariatur assumenda impedit consequatur rerum sed! Esse, ut? Alias, consequuntur?",
       like:10,
-      seen:false
+      seen:false,
+      datetime:new Date().toISOString()
+
 
     },
     {
@@ -36,7 +42,9 @@ const Comment = ({comfunc,toast}) => {
       name:"yusuf",
       title:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi recusandae pariatur assumenda impedit consequatur rerum sed! Esse, ut? Alias, consequuntur?",
       like:3000,
-      seen:false
+      seen:false,
+      datetime:new Date().toISOString()
+
 
     },
     {
@@ -44,7 +52,9 @@ const Comment = ({comfunc,toast}) => {
       name:"yusufs",
       title:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi recusandae pariatur assumenda impedit consequatur rerum sed! Esse, ut? Alias, consequuntur?",
       like:1000000,
-      seen:false
+      seen:false,
+      datetime:new Date().toISOString()
+
     
     },
 
@@ -81,9 +91,9 @@ const Comment = ({comfunc,toast}) => {
       }
  
  const likes=(
-        <div className="likes">
+        <div style={all} className="likes">
             
-            <div className="heart">
+            <div style={all} className="heart">
 
               {liki? <Heart
               
@@ -135,14 +145,20 @@ const Comment = ({comfunc,toast}) => {
   const comment=(
   <>
       {arr.length?(
-  arr.map(res=>  (
+  arr.map(res=>  {
+    
+    const format=parseISO(res?.datetime);
+    const date=`${formatDistanceToNow(format)} ago`
 
-    <div className="user_com" key={res.id}>
+    return(
+
+    <div  className="user_com" key={res.id} style={all}>
       <div style={{display:"flex",justifyContent:"space-between",}}>
 
         <div className="prof">
     <img src={img} alt={res.name} width={50} height={50} style={{borderRadius:"50%"}} />
         <h4>{res.name}</h4>
+        <span style={{transform:`translate(10px,12px)`,fontSize:"13px",}}>{date?date:null}</span>
       </div>
       <FaEllipsisV onClick={()=>alerts(res.id)} style={{cursor:"pointer"}}/>
         </div>
@@ -152,12 +168,12 @@ const Comment = ({comfunc,toast}) => {
 
         <br/>
         <br/>
-        <div className="likes2">
+        <div style={all} className="likes2">
             
-            <div className="heart">
+            <div style={all} className="heart">
 
               {!res?.seen? <Heart
-              
+
                onClick={()=>likis(res?.id)} className={res?.seen?"Likes_s":"hearts"}/>:<FaHeart onClick={()=>unlikis(res?.id)}
                style={{cursor:"pointer"}}
               className={res?.seen?"Likes_s":"hearts"}
@@ -173,7 +189,7 @@ const Comment = ({comfunc,toast}) => {
           <br/>
     </div>
   
-  ))
+  )})
 ):(
      <div>
         <h1>No comment to display</h1>
@@ -192,7 +208,7 @@ const Comment = ({comfunc,toast}) => {
     if(!inp.length){
       return toast.error("this field cant be blank")
     }else if(inp.length){
-      const body={id:Math.random(),title:inp,name:"suleimans",like:0,img:imgs}
+      const body={id:Math.random(),title:inp,name:"suleimans",like:0,img:imgs,datetime:new Date().toISOString()}
       
       const all=[...arr,body];
       setarr(all)
@@ -205,7 +221,7 @@ const Comment = ({comfunc,toast}) => {
     if(!inp2.length){
       return toast.error("this field can't be blank")
     }else if(inp2.length){
-      const body={id:Math.random(),title:inp2,name:"suleimans",like:0,img:imgs}
+      const body={id:Math.random(),title:inp2,name:"suleimans",like:0,img:imgs,datetime:new Date().toISOString()}
       
       const all=[...arr,body];
       setarr(all)
@@ -221,7 +237,7 @@ const Comment = ({comfunc,toast}) => {
     <>
       {/* <ToastContainer/> */}
     
-    <main className='comment_sections'>
+    <main className='comment_sections' style={all}>
         <div className="times2"><FaTimes className='close_com' onClick={comfunc}/></div> 
       <div className="comment_tabs">
 
@@ -229,12 +245,12 @@ const Comment = ({comfunc,toast}) => {
         {comment}
 
       </div>
-      <div className="com_text">
+      <div className="com_text" style={all}>
 
       {!inp.length&&!imgs.length?(
 
       <>
-      <textarea value={inp} onInput={(e)=>setinp(e.target.value)} className='comment_inp' name='comment' placeholder='write down your thogth on this product '></textarea>
+      <textarea style={all} value={inp} onInput={(e)=>setinp(e.target.value)} className='comment_inp' name='comment' placeholder='write down your thogth on this product '></textarea>
         {inp?.length
         ?
         <button className='com_btns' onClick={add}><FaArrowUp/></button>: <label htmlFor='input' onChange={(e)=>setimg(URL.createObjectURL(e.target.files[0]))} className='com_btns' > <FaImages className='fa_icon'/> <input hidden accept='image/*' type="file" name="input" id="input" /> </label>
@@ -242,11 +258,11 @@ const Comment = ({comfunc,toast}) => {
       }
       </>
       ):imgs.length&&!inp.length?(
-        <main className='com_end'>
+        <main className='com_end' style={all}>
           <div className="times2"><FaTimes color='skyblue' className='close_com' onClick={()=>setimg("")}/></div>
             <img src={imgs} width={100} height={70} />
             <br />
-            <textarea value={inp2} onInput={(e)=>setinp2(e.target.value)} className='comment_inp2' name='comment' placeholder='write down your thogth on this product '></textarea>
+            <textarea style={all} value={inp2} onInput={(e)=>setinp2(e.target.value)} className='comment_inp2' name='comment' placeholder='write down your thogth on this product '></textarea>
           {inp2?.length
           ?
           <button className='com_btn2' onClick={add2}><FaArrowUp/></button>:null}
@@ -254,7 +270,7 @@ const Comment = ({comfunc,toast}) => {
       ):(
 
         <>
-        <textarea value={inp} onInput={(e)=>setinp(e.target.value)} className='comment_inp' name='comment' placeholder='write down your thogth on this product '></textarea>
+        <textarea style={all} value={inp} onInput={(e)=>setinp(e.target.value)} className='comment_inp' name='comment' placeholder='write down your thogth on this product '></textarea>
           {inp?.length
           ?
           <button className='com_btns' onClick={add}><FaArrowUp/></button>: <label htmlFor='input' onChange={(e)=>setimg(URL.createObjectURL(e.target.files[0]))} className='com_btns' > <FaImages className='fa_icon'/> <input hidden type="file" name="input" id="input" /> </label>

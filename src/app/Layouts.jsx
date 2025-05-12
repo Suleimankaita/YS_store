@@ -5,13 +5,16 @@ import Nav from "./Nav";
 import { useSelector,useDispatch } from "react-redux";
 import { Suspense } from "react";
 import { carts } from "../features/funcSlice";
-import { FaTimes ,FaTrashAlt} from "react-icons/fa";
+import { FaTimes ,FaTrashAlt,FaSun,FaMoon} from "react-icons/fa";
 import { dec ,Add_card,deleteAll,dele} from "../features/funcSlice";
 import Fotter from "./Fotter"
 import logo from "../assets/img/logo1.png"
 import { useNavigate,useLocation ,useParams} from "react-router-dom";
+import { changetheame,theame } from "../features/funcSlice";
 
+import theamess from "../hooks/theame";
 const Layouts = () => {
+
   const {id}=useParams()
   const select=useSelector(carts)
   const [scrolled, setScrolled] = useState(false);
@@ -23,9 +26,11 @@ const Layouts = () => {
   const [back,setback]=useState(null)
   const [path,setpath]=useState(null)
   const bck=()=>navigate(-1)
+  const theames=useSelector(theame);
 
-  
-  
+  const changes=()=>disp(changetheame())
+
+
   useEffect(()=>{
     const {pathname} =loc
     setpath(pathname)
@@ -34,6 +39,10 @@ const Layouts = () => {
     // }
 
   },[loc])
+
+  const {all}=theamess()
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,10 +60,12 @@ const Layouts = () => {
     };
 
 
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      
     };
   }, []);
 
@@ -67,9 +78,9 @@ const Layouts = () => {
 
 
   return (
-    <>
+    <main style={all}>
     
-    <section ref={ref} className={'Cart'}>
+    <section ref={ref} className={"Cart"}>
     <div className="times">
     <FaTimes className="Tm" onClick={show}/>
     </div>
@@ -113,7 +124,7 @@ const Layouts = () => {
       </div>
       </section>
 
-      <header className={`${path===`/Home/${id}`?"scrolled":"header"} ${scrolled ? "scrolled" : "header"}`}>
+      <header style={theames&&scrolled||path===`/Home/${id}`||path===`/cart`&&!scrolled?all:null} className={ `${path===`/Home/${id}`||path===`/cart`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } ` }>
       {/* <div style={path=="/Home"?{display:"none"}:{display:"flex"}} className="back">
 
        <li style={{transform:"translate(-10px,-5px)"}}>{back}</li> 
@@ -128,7 +139,10 @@ const Layouts = () => {
                       <FaShoppingCart fontSize={20} color='rgb(49, 137, 253)'/>
 
                       </li>
-       <nav>
+                      <li>
+                    {theames?<FaSun onClick={changes} />:<FaMoon onClick={changes} />}
+                  </li>
+       <nav style={theames&&window.innerWidth<=900?all:null}>
 
         <ul>
           <li>Home</li>
@@ -151,12 +165,14 @@ const Layouts = () => {
                       </li>
                   </div>        
 
+                  
+
         </ul>
        </nav>
       </header>
       <Outlet />
-      <Fotter />
-    </>
+      <Fotter  />
+    </main>
   );
 };
 

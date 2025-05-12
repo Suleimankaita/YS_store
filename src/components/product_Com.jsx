@@ -18,13 +18,15 @@ import { Add_card } from '../features/funcSlice'
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-
+import { theame } from '../features/funcSlice'
+import Theamess from '../hooks/theame'
 const Product_Com = () => {
 
     const nav=useNavigate()
     const dispatch=useDispatch()
     
     const ref = useRef(null);
+    const theames=useSelector(theame);
 
   const { scrollYProgress } = useScroll({
     // target: ref,
@@ -211,11 +213,13 @@ const Product_Com = () => {
         },
     ])
 
+    const {all}=Theamess()
+
     const content=(
       
         <Suspense fallback={<p>loading....</p>}>
             {product.slice(0,10).map(res=>(
-                  <Link to={`/Home/${res.id}`} style={{color:"black"}}
+                  <Link to={`/Home/${res.id}`} style={theames?all:{color:"black"}}
                   //   ref={ref}
                     className='product_con'
                   //   style={{
@@ -245,23 +249,23 @@ const Product_Com = () => {
     )
 
   return (
-    <section className='Products'>
-        <div className="child_pro">
-    <div className="explore">
-        <div className="explore1">
+    <section className='Products' style={all}>
+        <div className="child_pro" style={all}>
+    <div className="explore" style={all}>
+        <div className="explore1" style={all}>
 
-    <div className="product_head">
+    <div className="product_head" style={all}>
 
         <h4>Discover</h4>
         <h3>Products</h3>
         <h2>Explore Our diverse range of Quality products today!</h2>
     </div>
         </div>
-        <div className="explore2">
-            <button className='View_all'>View All</button>
+        <div className="explore2" style={all}>
+            <button className='View_all' style={all}>View All</button>
         </div>
     </div>
-    <main className="Product">
+    <main className="Product" style={all}>
         {content}
     </main>
     

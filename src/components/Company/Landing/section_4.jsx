@@ -2,7 +2,10 @@ import { useState } from "react"
 import React from 'react'
 import img from "../../../assets/img/sl.webp"
 import {FaStar} from "react-icons/fa"
+import Theamess from "../../../hooks/theame"
 const Section_4 = () => {
+
+    const {all}=Theamess()
 
 
     const [testimonials,setTestimonials]=useState([
@@ -55,7 +58,7 @@ const Section_4 = () => {
     ))
 
   return (
-    <section className='section_4'>
+    <section className='section_4' style={all}>
         <div className="sec_4">
             <h1>Customer testimonials</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, aperiam?</p>

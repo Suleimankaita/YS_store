@@ -14,6 +14,7 @@ import S from "./s"
 import Reader from './reader';
 import Shoping from "./components/Shopping/Page"
 import Item from "./components/Items/Page"
+import Cart from "./components/Cart/Page"
 
   function App() {
   
@@ -32,6 +33,7 @@ import Item from "./components/Items/Page"
       <Route path={'Shoes'} element={<Shoes/>}/>
       <Route path={'Clothes'} element={<Cloths/>}/>
       <Route path={'Company'} element={<Company/>}/>
+      <Route path={'Cart'} element={<Cart/>}/>
       <Route path={'Shopping mall'} element={<Shoping titles={"Shopping mall"} />}/>
    
       </Route>

@@ -2,11 +2,12 @@ import React from 'react'
 import Product_Com from './functions'
 import elec from "../../assets/img/cloth.jpeg"
 import Usechange_title from '../../hooks/Usechange_title'
+import Theamess from '../../hooks/theame'
 const page = () => {
       Usechange_title({titles:"Clothes"})
-  
+    const {all}=Theamess()
   return (
-    <article>
+    <article style={all}>
 
         <div className="bans" style={{backgroundImage:`url(${elec})`}}>
       <div className="lps">

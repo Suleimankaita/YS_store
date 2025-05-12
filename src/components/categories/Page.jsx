@@ -16,8 +16,12 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { useDispatch,useSelector } from 'react-redux'
 import { Add_card } from '../../features/funcSlice'
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Theamess from '../../hooks/theame'
+import { theame } from '../../features/funcSlice'
 
 const Product_Com = () => {
+
+    const {all}=Theamess()
 
     const dispatch=useDispatch()
     
@@ -40,7 +44,9 @@ const Product_Com = () => {
             name:"apple electronics",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:1,
@@ -48,7 +54,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:2,
@@ -56,7 +64,9 @@ const Product_Com = () => {
             name:"Shoes",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:3,
@@ -65,7 +75,9 @@ const Product_Com = () => {
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
 
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:4,
@@ -74,6 +86,8 @@ const Product_Com = () => {
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             price:20000,  
             quantity:1,
+            color:"white",
+
         },
         {
             id:5,
@@ -81,7 +95,9 @@ const Product_Com = () => {
             name:"Dell_Pocket_laptop",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
+            color:"white",
             price:15000  
+
         },
         {
             id:6,
@@ -89,6 +105,7 @@ const Product_Com = () => {
             name:"iwatch",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
+            color:"white",
             price:30000  
         },
         {
@@ -105,6 +122,7 @@ const Product_Com = () => {
             name:"rolex",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
+            color:"white",
             price:120000  
         },
         {
@@ -113,6 +131,7 @@ const Product_Com = () => {
             name:"Gucci Shoulder",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
+            color:"white",
             price:145000  
         },
         {
@@ -121,7 +140,7 @@ const Product_Com = () => {
             name:"T shirt",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-
+            color:"white",
             price:12000  
         },
         {
@@ -130,6 +149,8 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             price:1000,  
+            color:"white",
+
             quantity:1,
         },
         {
@@ -138,7 +159,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:36,
@@ -146,7 +169,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:10,
@@ -154,7 +179,9 @@ const Product_Com = () => {
             name:"TV",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:21,
@@ -162,7 +189,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:22,
@@ -170,7 +199,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:23,
@@ -179,7 +210,9 @@ const Product_Com = () => {
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
 
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:24,
@@ -195,7 +228,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
         {
             id:26,
@@ -203,7 +238,9 @@ const Product_Com = () => {
             name:"Headphone",
             title:"Lorem ipsum dolor sit amet  consectetur adipisicing elit.Ab a ",
             quantity:1,
-            price:1000  
+            price:1000  ,
+            color:"white",
+
         },
     ])
 
@@ -211,13 +248,15 @@ const Product_Com = () => {
       
         <Suspense fallback={<p>loading....</p>}>
             {product.slice(0,10).map(res=>(
-                  <motion.div
+                  <div
+                  style={all}
                 //   ref={ref}
                   className='product_con'
                 //   style={{
                 //     scale,
                 //     opacity,
                 //   }}
+
                   key={res.id}
                 >
                 {/* <div className='product_con'> */}
@@ -234,15 +273,15 @@ const Product_Com = () => {
                 <FaShoppingCart className='cs' onClick={()=> dispatch(Add_card(res))}/>
                 </div>
                 {/* </div> */}
-            </motion.div>
+            </div>
             ))}
         </Suspense>
 
     )
 
   return (
-    <section className='Products'>
-        <div className="child_pro">
+    <section className='Products' style={all}>
+        <div className="child_pro" style={all}>
         {/* 
     <div className="explore">
         <div className="explore1">
@@ -258,7 +297,7 @@ const Product_Com = () => {
             <button className='View_all'>View All</button>
         </div>
     </div> */}
-    <main className="Product">
+    <main className="Product" style={all}>
         {content}
     </main>
     

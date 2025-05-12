@@ -1,22 +1,24 @@
 import React,{ useState } from 'react'
 import { FaWhatsapp,FaFacebook,FaTwitter,FaInstagram } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import Theamess from '../hooks/theame'
 import logo from "../assets/img/logo1.png"
 const Fotter = () => {
 
+    const {all}=Theamess()
 
     return (
-    <footer>
-        <div className="subs">
-            <div className="hi">
+    <footer style={all}>
+        <div className="subs" style={all}>
+            <div className="hi" style={all}>
 
             <h1>Subscribes to update</h1>
             <p>stay informed with our latest news offers </p>
             </div>
-                    <div className="sas">
+                    <div className="sas" style={all}>
 
-            <div className="emails">
-            <input type="text" placeholder=' Your Email Here' /> 
+            <div className="emails" style={all}>
+            <input type="text" placeholder=' Your Email Here' style={all} /> 
             {/* <span>By Subscribing you accept our Privacy Policy</span> */}
 
             <button>Subscribe</button>
@@ -25,7 +27,7 @@ const Fotter = () => {
             </div>
 
         </div>
-        <div className="fotter_con">
+        <div className="fotter_con" style={all}>
             <img src={logo} alt="" width={"100px"} height={"100px"} style={{borderRadius:"50%"}} />
             <div className="los">
                 <h2>Quick Links</h2>
@@ -68,10 +70,10 @@ const Fotter = () => {
                 <p>Get involved</p>
             </div>
         </div>
-        <div className="all_copys">
+        <div className="all_copys" style={all}>
 
-        <div className="copy">
-            <ul>
+        <div className="copy" style={all}>
+            <ul style={all}>
 
             <li>  <Link to={'/'}>&copy;YS Store ,All rights reserved </Link></li>
             <li><Link to={'/'}>Privacy </Link></li>

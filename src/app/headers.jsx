@@ -1,5 +1,5 @@
 import Sub_head from './sub_head'
-import {FaGlobe,FaShoppingCart,FaArrowDown,FaArrowAltCircleDown,FaArrowAltCircleUp} from 'react-icons/fa'
+import {FaGlobe,FaShoppingCart,FaArrowDown,FaMoon,FaSun,FaArrowAltCircleDown,FaArrowAltCircleUp} from 'react-icons/fa'
 import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -9,6 +9,13 @@ const Headers = () => {
 
 
     const [scrolled, setScrolled] = useState(false);
+    const [theame, settheame] = useState(false);
+
+    const changetheame=()=>settheame(prev=>!prev);
+
+    useEffect(()=>{
+      theame?document.body.className="light":document.body.className="dark"
+    },[theame])
 
     useEffect(() => {
       const handleScroll = () => {

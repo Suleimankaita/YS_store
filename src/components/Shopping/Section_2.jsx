@@ -1,10 +1,13 @@
 import React from 'react'
-
+import Theamess from '../../hooks/theame'
 const Section_2 = () => {
+
+    const {all}=Theamess()
+
   return (
-    <section className='section_2'>
+    <section style={all} className='section_2'>
         <br /><br />
-        <div className="section_2_content">
+        <div style={all} className="section_2_content">
 
         <h1>Empower</h1>
         <br />
@@ -13,8 +16,8 @@ const Section_2 = () => {
             <p>Our Platforms Allowes you to easily set up own shop and showcase your unique<br /> products manage your business effortlessly while reducing a wider audiance online.</p>
         </div>
         
-        <div className="contentss">
-            <div className="content1">
+        <div style={all} className="contentss">
+            <div className="content1" >
                 <h1>Explore</h1>
                 <p>Explore our platform and discover the tools you need to succeed in the digital marketplace.</p>
             </div>
@@ -27,7 +30,7 @@ const Section_2 = () => {
                 <p>Sell your products with ease and reach a global audience.</p>
             </div>
         </div>
-        <div className="company_btn">
+        <div className="company_btn" >
             <button>Start</button>
             <button>Learn more</button>
         </div>
