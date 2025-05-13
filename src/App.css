@@ -1110,13 +1110,16 @@ ul li {
     .Search_cons{
       display: flex;
       margin: 10px;
-      width: 100%;
+      width: 130%;
+    }
+    .desk{
+      display:none
     }
 
     .search{
       display: flex;
       /* flex: 1; */
-      width: 110%;
+      width: 120%;
       height: 30px;
       border-radius: 10px;
       outline: none;
@@ -1145,6 +1148,9 @@ ul li {
     }
     .nons{
       display: flex;
+    }
+    header li{
+      margin:7px;
     }
     .msq{
       width:100%;
@@ -3075,6 +3081,9 @@ footer{
     left:75%;
     color: whitesmoke;
   }
+  .mob{
+    display: none;
+  }
   .likes2{
     display:flex;
     height: 30px;
@@ -4642,6 +4651,9 @@ footer{
     flex-flow: column;
     min-height: 50px;
 
+  }
+  .mob{
+    display: none;
   }
   .com_btns{
     position: absolute;

@@ -116,11 +116,12 @@ const Layouts = () => {
 
                   </NavLink>
                       </li>
+                      <li className="desk"><Search/></li>
                       
-                      <li><Search/></li>
                       <li>
                     {theames?<FaSun onClick={changes} />:<FaMoon onClick={changes} />}
                   </li>
+                      <li className="mob"><Search/></li>
        <nav style={theames&&window.innerWidth<=900?all:null}>
 
         <ul >
