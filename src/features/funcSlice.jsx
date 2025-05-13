@@ -45,7 +45,7 @@ const initialState =
               // Add new item
               updatedCart = [...state.Cart, { ...action.payload,
       seen:false,
-      checked:false ,         //  quantity: 1
+      checked:true ,         //  quantity: 1
                 }];
               // console.log(updatedCart)
             

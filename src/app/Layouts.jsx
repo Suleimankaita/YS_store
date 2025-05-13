@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef } from "react";
 import { Outlet,NavLink } from "react-router-dom";
-import { FaShoppingCart,FaLessThan } from "react-icons/fa";
+import { FaShoppingCart,FaLessThan, FaArrowCircleLeft, FaBars } from "react-icons/fa";
 import Nav from "./Nav";
 import { useSelector,useDispatch } from "react-redux";
 import { Suspense } from "react";
@@ -12,8 +12,14 @@ import logo from "../assets/img/logo1.png"
 import { useNavigate,useLocation ,useParams} from "react-router-dom";
 import { changetheame,theame } from "../features/funcSlice";
 import theamess from "../hooks/theame";
+import Search from "./Search";
+import { transform } from "framer-motion";
+import { BiHomeAlt,BiCategoryAlt,BiPhone,BiDoorOpen,BiCaretRight,BiCog} from 'react-icons/bi';
+
+
 const Layouts = () => {
 
+  const [activeSearch,setactiveSearch]=useState(false)
   const {id}=useParams()
   const select=useSelector(carts)
   const [scrolled, setScrolled] = useState(false);
@@ -26,9 +32,9 @@ const Layouts = () => {
   const [path,setpath]=useState(null)
   const bck=()=>navigate(-1)
   const theames=useSelector(theame);
-
+  const ref_nav=useRef(null)
+  
   const changes=()=>disp(changetheame())
-
 
   useEffect(()=>{
     const {pathname} =loc
@@ -46,13 +52,14 @@ const Layouts = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-
         setScrolled(true);
         ref.current.classList.remove("view")
+
 
       } else {
         setScrolled(false);
         if(ref.current) {
+
           ref.current.classList.add("view")
         }
       }
@@ -64,7 +71,6 @@ const Layouts = () => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      
     };
   }, []);
 
@@ -78,49 +84,15 @@ const Layouts = () => {
 
   return (
     <main style={all}>
-    
-    <section ref={ref} className={"Cart"}>
-    <div className="times">
+      {/* <Nav  ref_nav={ref_nav}/> */}
+
+    <section style={all} ref={ref} className={"Cart"}>
+    <div className="times" style={{display:"flex",justifyContent:"flex-end"}}>
     <FaTimes className="Tm" onClick={show}/>
     </div>
-      <h1>&#8358;{Number(amounts).toLocaleString()}</h1>
-
-{!select.length&&<p>Empty</p>}
-      <div className="sl">
-
-      {
-       <Suspense fallback={<p>loading....</p>}>
-       {select.map(res=>(
-           <div className='mem' key={res.id}>
-
-           <img src={res?.img} width={"100%"} height={"70px"}/>
-           <div className="store">
-            <span>{res.name}</span>
-            <span>₦{res?.price}</span>
-           </div>
-           <div className="prices2" >
-           <button onClick={()=>disp(dec(res))}>-</button>
-           <span className="quantity">{res?.quantity}</span>
-           <button onClick={()=>disp(Add_card(res))} >+</button>
-           </div>
-           <div className="deletes">
-
-           <button className="trash" onClick={()=>disp(dele(res))}><FaTrashAlt/></button>
-           </div>
-           
-
-           </div>
-       ))}
-   </Suspense> 
-      }
-      </div>
-
-      <br /><br /><br /><br /><br />
-      <div className="check">
-
-      <button onClick={()=>alert("payments")}>pay</button>
-      <button onClick={()=>disp(deleteAll())}>Delete All</button>
-      </div>
+<Nav/>
+        
+    
       </section>
 
       <header style={theames&&scrolled||path===`/Home/${id}`||path===`/cart`&&!scrolled?all:null} className={ `${path===`/Home/${id}`||path===`/cart`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } ` }>
@@ -128,7 +100,11 @@ const Layouts = () => {
 
        <li style={{transform:"translate(-10px,-5px)"}}>{back}</li> 
       </div> */}
-        <img src={logo} alt="" width={"50px"} height={"50px"} style={{borderRadius:"50%",marginLeft:"10px"}} />
+
+<FaBars className="bars" onClick={show}/>
+
+        <img src={logo} alt="" width={"50px"} height={"50px"} style={{borderRadius:"50%",marginLeft:"10px",}} />
+      
         <li className="shoping_card nons"  style={{marginRight:"10px"}}>    
                           
         <NavLink to="/cart">
@@ -140,18 +116,21 @@ const Layouts = () => {
 
                   </NavLink>
                       </li>
+                      
+                      <li><Search/></li>
                       <li>
                     {theames?<FaSun onClick={changes} />:<FaMoon onClick={changes} />}
                   </li>
        <nav style={theames&&window.innerWidth<=900?all:null}>
 
-        <ul>
-         <NavLink to="/"> <li>Home</li></NavLink>
-          <li className="cas">search</li>
-          <li>All Categories</li>
-          <li>Settings</li>
-          <li className="cas">Elcectronics</li>
-
+        <ul >
+           {/* <li>All Categories</li> */}
+          <NavLink  className="nons"><BiCog/> <li className="nons">Settings</li></NavLink> 
+                          <NavLink  className="nons"><BiCategoryAlt/><li> All Categories</li></NavLink>
+         <NavLink className="nons" to="/"><BiHomeAlt/> <li>Home</li></NavLink>
+           
+         <NavLink  className="nons"> <BiPhone/>  <li className="ca">Elcectronics</li> 
+         </NavLink>
                 <div className="sws">
                   <li className="shoping_card cas "
                   
@@ -166,6 +145,7 @@ const Layouts = () => {
 
                   </NavLink>        
                       </li>
+                      
                   </div>        
 
                   

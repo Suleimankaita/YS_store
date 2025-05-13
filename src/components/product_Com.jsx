@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { theame } from '../features/funcSlice'
 import Theamess from '../hooks/theame'
-const Product_Com = () => {
+const Product_Com = ({search}) => {
 
     const nav=useNavigate()
     const dispatch=useDispatch()
@@ -214,7 +214,12 @@ const Product_Com = () => {
     ])
 
     const {all}=Theamess()
-
+    const searchs=product.filter(res=>{return res?.name.toLowerCase().includes("iwat"?.toLowerCase())})
+   
+    useEffect(()=>{
+        console.log(search)
+    },[search])
+   
     const content=(
       
         <Suspense fallback={<p>loading....</p>}>
