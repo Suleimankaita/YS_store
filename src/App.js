@@ -15,7 +15,7 @@ import Reader from './reader';
 import Shoping from "./components/Shopping/Page"
 import Item from "./components/Items/Page"
 import Cart from "./components/Cart/Page"
-
+import Allcategories from "./components/All_categories/page"
   function App() {
   
     return (
@@ -34,6 +34,7 @@ import Cart from "./components/Cart/Page"
       <Route path={'Clothes'} element={<Cloths/>}/>
       <Route path={'Company'} element={<Company/>}/>
       <Route path={'Cart'} element={<Cart/>}/>
+      <Route path={'All categories'} element={<Allcategories/>}/>
       <Route path={'Shopping mall'} element={<Shoping titles={"Shopping mall"} />}/>
    
       </Route>

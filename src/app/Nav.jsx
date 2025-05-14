@@ -21,8 +21,8 @@ const Nav = ({ref_nav}) => {
         <ol style={all}>
     
          <NavLink to="/"> <li><BiHomeAlt/> Home</li></NavLink>
-               <li><BiCategoryAlt/> All Categories</li>
-              <li className="cas"><BiPhone/> Elcectronics</li> 
+         <NavLink to={"All categories"}> <li><BiCategoryAlt/> All Categories</li></NavLink>
+             <NavLink to={"electronics"}> <li className="cas"><BiPhone/> Elcectronics</li> </NavLink>
     
         </ol>
         <ol style={all}>

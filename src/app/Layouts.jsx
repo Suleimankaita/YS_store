@@ -15,11 +15,12 @@ import theamess from "../hooks/theame";
 import Search from "./Search";
 import { transform } from "framer-motion";
 import { BiHomeAlt,BiCategoryAlt,BiPhone,BiDoorOpen,BiCaretRight,BiCog} from 'react-icons/bi';
-
+import arr from "../hooks/arr";
+import { toast, ToastContainer } from "react-toastify";
 
 const Layouts = () => {
 
-  const [activeSearch,setactiveSearch]=useState(false)
+  const [search,setSearch]=useState("")
   const {id}=useParams()
   const select=useSelector(carts)
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +34,7 @@ const Layouts = () => {
   const bck=()=>navigate(-1)
   const theames=useSelector(theame);
   const ref_nav=useRef(null)
-  
+  const [arrs,setarrs]=useState([])  
   const changes=()=>disp(changetheame())
 
   useEffect(()=>{
@@ -47,6 +48,25 @@ const Layouts = () => {
 
   const {all}=theamess()
 
+  const search_btn=(e)=>{
+
+    const ares=arr().filter(res=>{
+    return res?.name.toLowerCase().includes(search.trim().toLowerCase())
+  })
+    if(search){
+
+    setarrs(ares)
+  }else if(!search){
+    toast.error("search field can not be blank ")
+    setarrs([])
+    
+  }
+   if(!ares.length){
+    toast.error("search not found ")
+  //  return setarrs([])
+  }
+
+  };
 
 
   useEffect(() => {
@@ -116,12 +136,12 @@ const Layouts = () => {
 
                   </NavLink>
                       </li>
-                      <li className="desk"><Search/></li>
+                      <li className="desk"><Search {...{search,setSearch,search_btn}}/></li>
                       
                       <li>
                     {theames?<FaSun onClick={changes} />:<FaMoon onClick={changes} />}
                   </li>
-                      <li className="mob"><Search/></li>
+                      <li className="mob"><Search {...{search,setSearch,search_btn}} /></li>
        <nav style={theames&&window.innerWidth<=900?all:null}>
 
         <ul >
@@ -130,7 +150,7 @@ const Layouts = () => {
                           <NavLink  className="nons"><BiCategoryAlt/><li> All Categories</li></NavLink>
          <NavLink className="nons" to="/"><BiHomeAlt/> <li>Home</li></NavLink>
            
-         <NavLink  className="nons"> <BiPhone/>  <li className="ca">Elcectronics</li> 
+         <NavLink to={"electronics"} className="nons"> <BiPhone/>  <li className="ca">Elcectronics</li> 
          </NavLink>
                 <div className="sws">
                   <li className="shoping_card cas "
@@ -154,6 +174,20 @@ const Layouts = () => {
         </ul>
        </nav>
       </header>
+
+      <ToastContainer/>
+      {arrs.length?(
+        <div className="Search_results">
+        suleiman
+        </div>):null
+      
+      }
+      {!arrs.length&&
+        <div style={arrs.length&&search===""?{display:"none"}:!arrs.length&&!search===""?{display:"none"}:{display:"none"}} className="Search_results">
+        not fout
+        </div>
+       } 
+      
       <Outlet />
       <Fotter  />
     </main>
