@@ -73,7 +73,7 @@ const Layouts = () => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
-        ref.current.classList.remove("view")
+        // ref.current.classList.remove("view")
 
 
       } else {
@@ -115,7 +115,7 @@ const Layouts = () => {
     
       </section>
 
-      <header style={theames&&scrolled||path===`/Home/${id}`||path===`/cart`&&!scrolled?all:null} className={ `${path===`/Home/${id}`||path===`/cart`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } ` }>
+      <header style={theames&&scrolled||path===`/Home/${id}`||path===`/All%20categories`||path===`/cart` ||path===`/Home/${id}`&&!scrolled?all:null} className={ `${path===`/cart`||path===`/All%20categories`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } ` }>
       {/* <div style={path=="/Home"?{display:"none"}:{display:"flex"}} className="back">
 
        <li style={{transform:"translate(-10px,-5px)"}}>{back}</li> 
@@ -144,16 +144,16 @@ const Layouts = () => {
                       <li className="mob"><Search {...{search,setSearch,search_btn}} /></li>
        <nav style={theames&&window.innerWidth<=900?all:null}>
 
-        <ul >
+        <ul style={all} >
            {/* <li>All Categories</li> */}
-          <NavLink  className="nons"><BiCog/> <li className="nons">Settings</li></NavLink> 
-                          <NavLink  className="nons"><BiCategoryAlt/><li> All Categories</li></NavLink>
-         <NavLink className="nons" to="/"><BiHomeAlt/> <li>Home</li></NavLink>
+          <NavLink style={all} to="settings"  className="nons"><BiCog/> <li style={all}className="nons">Settings</li></NavLink> 
+                          <NavLink style={all}  to={"All categories"} className="nons"><BiCategoryAlt/><li style={all}> All Categories</li></NavLink>
+         <NavLink style={all} className="nons" to="/"><BiHomeAlt/> <li style={all}>Home</li></NavLink>
            
-         <NavLink to={"electronics"} className="nons"> <BiPhone/>  <li className="ca">Elcectronics</li> 
+         <NavLink style={all} to={"electronics"} className="nons"> <BiPhone/>  <li style={all}className="ca">Elcectronics</li> 
          </NavLink>
                 <div className="sws">
-                  <li className="shoping_card cas "
+                  <li  className="shoping_card cas "
                   
                    style={path==="/Company"?{display:"none"}:path==="/Shopping%20mall"?{display:"none"}:{display:"flex"}} 
                   >    
