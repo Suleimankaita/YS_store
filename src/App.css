@@ -1845,7 +1845,7 @@ ul li {
   
     }
     .all_hero_con_2{
-      overflow-y: auto;
+      overflow: hidden;
       height: 100%;
       display: flex;
       align-items: center;
