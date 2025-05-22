@@ -1,0 +1,136 @@
+
+
+:root{
+  --color:black;
+  --con1:aliceblue;
+  --feature_bg:rgb(215, 220, 225);
+  --feature_bg2:rgb(255, 255, 255);
+  --explore_bg:aliceblue;
+  --product_bg:white;
+  --body_bg:white;
+  --btn_bg: rgb(96, 19, 168);
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --color:whitesmoke ;
+    --con1:rgb(54, 54, 54);
+    --feature_bg:rgb(54, 54, 54);
+    --feature_bg2:rgb(54, 54, 54);
+    --explore_bg:rgb(54, 54, 54);
+    --product_bg:rgb(54, 54, 54);
+    --body_bg:rgb(54, 54, 54);
+  }
+}
+
+
+@media screen and (max-width:600px){
+  .btn_feature button{
+    width: 120px;
+    border-radius: 10px;
+    border:none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.174);
+    margin-left: 20px;
+    transition: all 0.5s ease-in-out;
+    height: 45px;
+    font-size: 15px;
+  }
+  
+  .btn_feature button:nth-child(2){
+    color: white;
+    background-color: rgb(96, 19, 168);
+    
+  }
+  
+  .btn_feature button:hover{
+    cursor: pointer;
+    transform: scale(1.09);
+  }
+}
+
+@media screen and (min-width:601px) and (max-width:900){
+  .btn_feature button{
+    width: 120px;
+    border-radius: 10px;
+    border:none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.174);
+    margin-left: 20px;
+    transition: all 0.5s ease-in-out;
+    height: 45px;
+    font-size: 15px;
+  }
+  
+  .btn_feature button:nth-child(2){
+    color: white;
+    background-color: rgb(96, 19, 168);
+    
+  }
+  
+  .btn_feature button:hover{
+    cursor: pointer;
+    transform: scale(1.09);
+  }
+}
+
+@media screen and (min-width:901px){
+  .Investment_sec1{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--body_bg);
+    position: relative;
+    top: 70px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .invest_content_1 h1{
+    font-size: 35px;
+    text-align: start;
+    font-weight: 100;
+  }
+  .invest_content_1 p{
+    width: 70%;
+  }
+  .invest_content_1,.invest_content_2{
+    width: 48%;
+    height:90vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .soss{
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+  }
+  .btn_feature2 {
+    margin: 10px;
+  }
+  .btn_feature2 button{
+    width: 80px;
+    border-radius: 10px;
+    border:none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.174);
+    margin-left: 20px;
+    transition: all 0.5s ease-in-out;
+    height: 45px;
+    font-size: 13px;
+  }
+  
+  .btn_feature2 button:nth-child(1){
+    color: white;
+    background-color: rgb(96, 19, 168);
+    
+  }
+  
+  .btn_feature2 button:hover{
+    cursor: pointer;
+    transform: scale(1.09);
+  }
+  .invest_content_2{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+}

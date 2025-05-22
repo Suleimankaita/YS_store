@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fade-In Three Sections</title>
+  <style>
+    body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+section {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Fade-in Animation */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-out forwards;
+  transform-origin:left;
+  animation-timeline:view();
+  animation-range: entry;
+}
+
+/* Different delays for each section */
+.fade-section:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.fade-section:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.fade-section:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+@keyframes fadeIn {
+  from{
+    transform: translatex(-500px);
+
+  }
+  
+  to {
+    transform: translatex(0px);
+
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+}
+
+/* Optional styling for better visuals */
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+  </style>
+</head>
+<body>
+  <section class="fade-section">
+    <h2>Section 1</h2>
+    <p>This is the first section. It fades in when the page loads.</p>
+  </section>
+
+  <section class="fade-section">
+    <h2>Section 2</h2>
+    <p>This section fades in as you scroll down.</p>
+  </section>
+
+  <section class="fade-section">
+    <h2>Section 3</h2>
+    <p>The third section appears last with a smooth fade-in effect.</p>
+  </section>
+
+  <script>
+
+      const arr=[11,11,2,3,4,5,6]
+
+      const find=arr.filter((item,_)=>{
+
+        const all=arr.indexOf(_)!==item;
+        
+        if(all){
+          const alerts=confirm("this item is already exist do you want replace it " + item)
+        
+
+                if(alerts){
+                  
+                  return confirm("replaced by "+item)
+                  
+                }else{
+                 return confirm("canceled the destination",item)
+                
+                }
+                
+              }else{
+                return 
+              }
+            
+      })
+
+  </script>
+
+</body>
+</html>
