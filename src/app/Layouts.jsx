@@ -69,6 +69,32 @@ const Layouts = () => {
     ref.current.classList.toggle("show")
   }
 
+  useEffect(()=>{
+
+    const msw=async()=>{
+      try{
+
+        const res=await Notification.requestPermission()
+
+        if(res==="granted"){
+          new Notification("YS Store",{
+            title:"YS notification",
+            body:"suleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys store",
+            icon:logo,
+            
+          })
+        }else if(res==="denied"){
+          console.log("denied")
+        }
+
+      }catch(err){
+        console.log(err)
+      }
+    }
+    msw()
+
+  },[])
+
   
   return (
     <main style={all}>
@@ -83,7 +109,7 @@ const Layouts = () => {
     
       </section>
 
-      <header style={src} className={classnames }>
+      <header style={src??all} className={classnames }>
       {/* <div style={path=="/Home"?{display:"none"}:{display:"flex"}} className="back">
 
        <li style={{transform:"translate(-10px,-5px)"}}>{back}</li> 

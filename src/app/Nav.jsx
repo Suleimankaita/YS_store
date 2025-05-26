@@ -20,12 +20,12 @@ const Nav = ({ref_nav}) => {
     
         <ol style={all}>
     
-         <NavLink to="/"> <li><BiHomeAlt/> Home</li></NavLink>
-         <NavLink to={"All categories"}> <li><BiCategoryAlt/> All Categories</li></NavLink>
-             <NavLink to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>Investment center</li> </NavLink>
-             <NavLink to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>Delivery</li> </NavLink>
-             <NavLink to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>History</li> </NavLink>
-             <NavLink to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>Notification</li> </NavLink>
+         <NavLink style={all} to="/"> <li><BiHomeAlt/> Home</li></NavLink>
+         <NavLink style={all} to={"All categories"}> <li><BiCategoryAlt/> All Categories</li></NavLink>
+             <NavLink style={all} to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>Investment center</li> </NavLink>
+             <NavLink style={all} to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>Delivery</li> </NavLink>
+             <NavLink style={all} to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>History</li> </NavLink>
+             <NavLink style={all} to={"Investment center"}> <li className="cas"><BiSolidUniversalAccess/>Notification</li> </NavLink>
     
         </ol>
         <ol style={all}>

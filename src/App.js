@@ -23,8 +23,8 @@ import Motor from "./components/All_categories/Motors/page"
 import Plumbings from "./components/All_categories/Plumbing/page"
 import Titles from './components/All_categories/testiles/page';
 import Provision from './components/All_categories/Provision/page';
-import Investment from './components/Investment/Page';
-  
+  import A from './A';
+  import Investment from "./Investments/Investment"
 function App() {
   
     return (
@@ -40,7 +40,7 @@ function App() {
       <Route path={'/Home/:id'} element={<Item/>}/> 
       <Route path={'Company'} element={<Company/>}/>
       <Route path={'Cart'} element={<Cart/>}/>
-      <Route path={'Investment center'} element={<Investment/>}/>
+      <Route path={'Investment center'} element={<Investment />}/>
       <Route path={'All categories'}>
         <Route  index element={<Allcategories/>}/>
         <Route path={'Textles'} element={<Titles/>}/>

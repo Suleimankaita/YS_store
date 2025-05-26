@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DNA Molecular Simulator</title>
+  <style>
+    body { 
+      margin: 0; 
+      font-family: 'Arial', sans-serif;
+    }
+    #ui {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+    button {
+      margin: 5px;
+      padding: 8px;
+      background: #4CAF50;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui">
+    <h2>DNA Simulator</h2>
+    <button id="replicate">Start Replication</button>
+    <button id="transcribe">Transcribe Gene</button>
+    <button id="mutate">Induce Mutation</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+  <script>
+    // ========== DNA SIMULATION CORE ========== //
+class DNA {
+  constructor() {
+    this.sequence = "ATGCGATAGCTAGCTAGCT"; // Sample DNA
+    this.complement = this.getComplement(this.sequence);
+    this.isReplicating = false;
+    this.isTranscribing = false;
+  }
+
+  getComplement(seq) {
+    return seq.split('').map(base => {
+      if (base === 'A') return 'T';
+      if (base === 'T') return 'A';
+      if (base === 'G') return 'C';
+      if (base === 'C') return 'G';
+    }).join('');
+  }
+
+  replicate() {
+    this.isReplicating = true;
+    // Simulate replication fork
+    console.log("Replication started...");
+  }
+
+  transcribe(geneStart, geneEnd) {
+    this.isTranscribing = true;
+    const gene = this.sequence.slice(geneStart, geneEnd);
+    const mRNA = gene.replace(/T/g, 'U');
+    console.log(`Transcribed mRNA: ${mRNA}`);
+  }
+
+  induceMutation(position, newBase) {
+    this.sequence = this.sequence.substring(0, position) + newBase + 
+                    this.sequence.substring(position + 1);
+    this.complement = this.getComplement(this.sequence);
+    console.log(`Mutation at ${position}: ${newBase}`);
+  }
+}
+
+// ========== 3D VISUALIZATION ========== //
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0a1a);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Lighting
+const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+scene.add(light);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(1, 1, 1);
+scene.add(directionalLight);
+
+// Controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+camera.position.z = 15;
+
+// DNA Model
+const dnaModel = new THREE.Group();
+scene.add(dnaModel);
+
+// Create atom
+function createAtom(x, y, z, element) {
+  const radius = {
+    'P': 0.2, 'O': 0.15, 'C': 0.12, 'N': 0.13
+  }[element] || 0.1;
+
+  const color = {
+    'P': 0xFFA500, 'O': 0xFF0000, 'C': 0xCCCCCC, 'N': 0x0000FF
+  }[element] || 0xFFFFFF;
+
+  const geometry = new THREE.SphereGeometry(radius, 16, 16);
+  const material = new THREE.MeshPhongMaterial({ color });
+  const atom = new THREE.Mesh(geometry, material);
+  atom.position.set(x, y, z);
+  return atom;
+}
+
+// Build DNA
+function buildDNA(dna) {
+  const rise = 0.34;
+  const twist = (2 * Math.PI) / 10.5;
+  const radius = 1.2;
+
+  for (let i = 0; i < dna.sequence.length; i++) {
+    const angle = i * twist;
+    const x = Math.cos(angle) * radius;
+    const z = Math.sin(angle) * radius;
+    const y = i * rise - (dna.sequence.length * rise)/2;
+
+    // Backbone
+    dnaModel.add(createAtom(x, y, z, 'P'));
+    dnaModel.add(createAtom(x*0.9, y+0.1, z*0.9, 'O'));
+
+    // Bases
+    const baseType = dna.sequence[i];
+    const baseColor = (baseType === 'A' || baseType === 'G') ? 0x00FF00 : 0xFF00FF;
+    const baseGeometry = new THREE.CylinderGeometry(0.15, 0.15, 0.05, 6);
+    const baseMaterial = new THREE.MeshPhongMaterial({ color: baseColor });
+    const base = new THREE.Mesh(baseGeometry, baseMaterial);
+    base.position.set(x*0.6, y, z*0.6);
+    base.rotation.x = Math.PI/2;
+    dnaModel.add(base);
+  }
+}
+
+// ========== MAIN ========== //
+const dna = new DNA();
+buildDNA(dna);
+
+// UI Events
+document.getElementById('replicate').addEventListener('click', () => {
+  dna.replicate();
+  animateReplication();
+});
+
+document.getElementById('transcribe').addEventListener('click', () => {
+  dna.transcribe(5, 15);
+  animateTranscription();
+});
+
+document.getElementById('mutate').addEventListener('click', () => {
+  const pos = Math.floor(Math.random() * dna.sequence.length);
+  const bases = ['A', 'T', 'G', 'C'];
+  const newBase = bases[Math.floor(Math.random() * 4)];
+  dna.induceMutation(pos, newBase);
+  animateMutation(pos);
+});
+
+// Animation
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+// Specialized Animations
+function animateReplication() {
+  // Visualize replication fork
+  console.log("Animating replication...");
+}
+
+function animateTranscription() {
+  // Show RNA polymerase movement
+  console.log("Animating transcription...");
+}
+
+function animateMutation(position) {
+  // Flash the mutated base
+  console.log(`Animating mutation at ${position}...`);
+}
+
+// Resize handler
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+  </script>
+</body>
+</html>

@@ -50,7 +50,8 @@ const Scr = () => {
 
         
 
-     const src=theames&&scrolled||path===`/Home/${id}`||path===`/All%20categories`||path===`/cart` ||path===`/Home/${id}`&&!scrolled?all:null 
+     const src=theames&&scrolled||path===`/Home/${id}`||path===`/All%20categories`||path===`/cart` ||path==="Investment%20center"||
+     path===`/Home/${id}`&&!scrolled?all:null 
     
      const classnames= `${path===`/cart`||path===`/Investment%20center`||path===`/All%20categories`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } `
   return{src ,classnames}

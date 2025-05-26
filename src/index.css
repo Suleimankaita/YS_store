@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 
 :root{
@@ -74,34 +75,72 @@
 
 @media screen and (min-width:901px){
   .Investment_sec1{
+    display: flex;
     width: 100%;
     min-height: 100vh;
     background-color: var(--body_bg);
     position: relative;
     top: 70px;
-    display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
-  .invest_content_1 h1{
-    font-size: 35px;
+  .invest_content_1 h2{
+    font-size: 30px;
+    /* width: 100%; */
     text-align: start;
     font-weight: 100;
   }
+  .pH1{
+    display: flex;
+    flex-flow:column;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
   .invest_content_1 p{
     width: 70%;
+    text-align: start;
+    margin: 5px;
+    transform: translate(17px,-10px);
+
+  }
+  .lw1 h3{
+    text-align: center;
   }
   .invest_content_1,.invest_content_2{
-    width: 48%;
+    width: 50%;
     height:90vh;
     display: flex;
     flex-flow: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
   .soss{
-    display: flex;
-    justify-content: flex-start;
+    display: none;
+    justify-content: center;
     width: 70%;
+  }
+  .kwq{
+    display: flex;
+    flex-flow:row;
+    align-items: center;
+    width: 80%;
+    justify-content: space-evenly;
+  }
+  .lw1 h3{
+    font-size: 28px;
+    margin: 5px;
+    font-weight: 200;
+  }
+  .lw1 span{
+    text-align: center;
+    width: 100%;
+  }
+  .lw1{
+    display: flex;
+    flex-flow:column;
+    align-items: center;
+    width: 100%;
   }
   .btn_feature2 {
     margin: 10px;
@@ -127,10 +166,218 @@
     cursor: pointer;
     transform: scale(1.09);
   }
-  .invest_content_2{
-    background-size: cover;
+  .sp_w1{
+    width: 50%;
+    height: 70%;
+    background-image: url(./assets/img/cloth.jpeg);
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 10px;
+  }
+  .strss{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .max_s{
+    font-size: 35px; 
+    font-weight: 100;
+    text-align: center;
 
+  }
+  .mx_ins{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .section_2_investment{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ms_in h4{
+    font-size: 15px;
+    font-weight: 100;
+  }
+  .img_ho img {
+    transition: 0.5s ease-in-out;
+
+  }
+  .lss{
+    background-color: var(--btn_bg);
+    color: whitesmoke;
+  }
+  .ms_in button{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .img_ho img:hover {
+    scale: 1.08;
+    cursor: pointer;
+  }
+  .img_ho{
+    width: 70%;
+    height: 50%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .ms_in h3{
+    font-weight: 100;
+    margin-top: 10px;
+  }
+  .ms_in{
+    width: 30%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .Section_ins_1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .lps_1{
+    height: 70%;
+    border-radius: 10px;
+    width: 35%;
+    background-image: url(./assets/Suleiman.JPG);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .lps_2{
+    height: 70%;
+    border-radius: 10px;
+    width: 35%;
+    background-image: url(./assets/img/Business_po.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .qsq{
+    display: flex;
+    flex-flow: column;
+    width: 40%;
+    margin-left: 20px;
+  }
+  .qsq h2{
+    font-weight: 100;
+  }
+  .qsq h1{
+    font-size: 30px;
+    font-weight: 100;
+    text-align: start;
+  }
+  .ksq h3{
+    font-size: 20px;
+    margin: 2px;
+  }
+  .lsa span{
+margin-top: 8px;
+  }
+  .line{
+    height: 100%;
+    position: relative;
+    font-size: 20px;
+    margin: 10px;
+    margin-left: 30px;
+    font-weight: 100;
+  }
+  .nams{
+    display: flex;
+    justify-content: start;
+  }
+  .lsaa{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .lsa p{
+    font-size: 18px;
+  }
+  .ksq{
+    color: rgb(235, 235, 58);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .section_5_ins{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50vh;
+
+  }
+  .nots h2{
+    font-size: 35px;
+    font-weight:lighter;
+    text-align: center;
+  }
+  .div_cons{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .Teams img{
+    border-radius:50%;
+  }
+  .Teams span{
+    width: 80%;
+  }
+  .Icons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+    margin: 10px;
+    font-size: 25px;
+  }
+  .icon_ins{
+    color: tomato;
+  }
+  .icon_X{
+    color: rgb(0, 183, 255);
+  }
+  .Teams{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+  }
+  .Section_6_ins{
+    min-height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .blocks p{
+    width: 60%;
+  }
+  .blocks h2{
+    font-size: 30px;
+    font-weight: 100;
   }
 }

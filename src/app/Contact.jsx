@@ -2,7 +2,7 @@ import React from 'react'
 import {BiEnvelope,BiPhone,BiSolidEditLocation,BiRightArrow,BiDownArrow} from "react-icons/bi"
 import { useState } from 'react'
 import Theamess from '../hooks/theame'
-
+import constt from "../assets/img/Contact_US.jpg"
 const Contact = () => {
   const [open,setopen]=useState(false)
   const {all}=Theamess()
@@ -62,8 +62,10 @@ const Contact = () => {
       <div>{open?address:""}</div>
             </div>
 
-<div className="contact_img" style={all}></div>
+<div className="contact_img" style={all}>
+    <img src={constt} width={"70%"} height={"100%"} />
 
+</div>
         </div>
     </section>
   )
