@@ -118,6 +118,15 @@ p {
             
       })
 
+      function tricky() {
+ console.log(a);
+ var a = 1;
+ console.log(b);
+ let b = 2;
+}
+
+tricky();
+
   </script>
 
 </body>

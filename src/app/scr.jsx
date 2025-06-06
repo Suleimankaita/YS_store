@@ -12,48 +12,50 @@ const Scr = () => {
     const [path,setpath]=useState(null)
   const [scrolled, setScrolled] = useState(false);
 
-      useEffect(() => {
-        const handleScroll = () => {
-          if (window.scrollY > 10) {
-            setScrolled(true);
-            // ref.current.classList.remove("view")
+    //   useEffect(() => {
+    //     const handleScroll = () => {
+    //       if (window.scrollY > 10) {
+    //         setScrolled(true);
+    //         // ref.current.classList.remove("view")
     
     
-          } else {
-            setScrolled(false);
-            // if(ref.current) {
+    //       } else {
+    //         setScrolled(false);
+    //         // if(ref.current) {
     
-            //   ref.current.classList.add("view")
-            // }
-          }
-        };
-    
-    
-    
-        window.addEventListener("scroll", handleScroll);
-    
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }, []);
+    //         //   ref.current.classList.add("view")
+    //         // }
+    //       }
+    //     };
     
     
     
-    useEffect(()=>{
-        const {pathname} = paths
-        setpath(pathname)
-        // if(pathname!=="/"){
-        //   setback(<p onClick={bck} style={{fontSize:'15px',cursor:"pointer"}}><FaLessThan /> Back</p> )
-        // }
+    //     window.addEventListener("scroll", handleScroll);
     
-      },[paths])
+    //     return () => {
+    //       window.removeEventListener("scroll", handleScroll);
+    //     };
+    //   }, []);
+    
+    
+    
+    // useEffect(()=>{
+    //     const {pathname} = paths
+    //     setpath(pathname)
+    //     // if(pathname!=="/"){
+    //     //   setback(<p onClick={bck} style={{fontSize:'15px',cursor:"pointer"}}><FaLessThan /> Back</p> )
+    //     // }
+    
+    //   },[paths])
 
         
 
-     const src=theames&&scrolled||path===`/Home/${id}`||path===`/All%20categories`||path===`/cart` ||path==="Investment%20center"||
+     const src=theames&&scrolled||path==="/Investment%20center/connections"||path===`/Home/${id}`||path===`/All%20categories`||path===`/cart` ||path==="Investment%20center"||
      path===`/Home/${id}`&&!scrolled?all:null 
     
-     const classnames= `${path===`/cart`||path===`/Investment%20center`||path===`/All%20categories`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } `
+     const classnames=`scrolled` 
+     
+    //  `${path===`/cart`||path==="/Investment%20center/connections"||path===`/Investment%20center`||path===`/All%20categories`?"scrolled":"header"} ${scrolled? "scrolled" :"header" } `
   return{src ,classnames}
 }
 

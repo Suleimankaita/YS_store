@@ -23,10 +23,15 @@ import Motor from "./components/All_categories/Motors/page"
 import Plumbings from "./components/All_categories/Plumbing/page"
 import Titles from './components/All_categories/testiles/page';
 import Provision from './components/All_categories/Provision/page';
-  import A from './A';
-  import Investment from "./Investments/Investment"
+import A from './A';
+import Video_call from './Investments/Connection/Video_call';  
+import Investment from "./Investments/Investment"
+import Connection from './Investments/Connection/Page';
+import { io } from 'socket.io-client';
+import { useEffect, useRef, useState } from 'react';
 function App() {
   
+   
     return (
 
     <Routes>
@@ -40,7 +45,13 @@ function App() {
       <Route path={'/Home/:id'} element={<Item/>}/> 
       <Route path={'Company'} element={<Company/>}/>
       <Route path={'Cart'} element={<Cart/>}/>
-      <Route path={'Investment center'} element={<Investment />}/>
+      <Route path={'Investment center'} >
+        <Route index element={<Investment />}/>
+        <Route path='Connections'>
+        <Route index element={<Connection />}/>
+        <Route path='Video_call/:id' element={<Video_call />}/>
+        </Route>
+      </Route>
       <Route path={'All categories'}>
         <Route  index element={<Allcategories/>}/>
         <Route path={'Textles'} element={<Titles/>}/>

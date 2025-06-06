@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postslice  from "../features/funcSlice";
+import Peer  from "../features/Peer";
 import apislice  from "../api/apislice";
 export default configureStore({
     reducer: {
         auth: postslice,
+        PeerSlice: Peer,
         [apislice.reducerPath]: apislice.reducer,
         
     },

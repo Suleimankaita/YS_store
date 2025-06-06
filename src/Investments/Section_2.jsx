@@ -3,6 +3,7 @@ import Theamess from '../hooks/theame'
 import { BiArrowToRight } from 'react-icons/bi'
 import BS from "../assets/img/charts.jpg"
 import inves from "../assets/img/invest.jpg"
+import {Link} from "react-router-dom"
 import com from "../assets/img/community.jpg"
 const Section_2 = () => {
     const obj=[
@@ -11,7 +12,9 @@ const Section_2 = () => {
             img:inves,
             body:"Explore diverse portfolio options tailored \n to your investment goal",
             title:"Our expert management team ensures your investments are \n in capable hands",
-            buttons:"Learn More"
+            buttons:"Learn More",
+            uri:"/Investment%20center/connections"
+
 
         },
         {
@@ -19,14 +22,17 @@ const Section_2 = () => {
             img:com,
             body:"Join a community of investors and \n\r share insights effortlessly ",
             title:"Connect with fellow investors through video calls and \n screen sharing",
-            buttons:"Sign Up"
+            buttons:"Sign Up",
+            uri:"/Investment%20center/connections"
+
         },
         {
             id:2,
             img:BS,
             body:"Benefit from personalized strategies \n designed investment experts ",
             title:"Our team crafts tailored strategies to help you achive your \n financial goals",
-            buttons:"Get Started"
+            buttons:"Get Started",
+            uri:"/Investment%20center/connections"
         }
     ]
 
@@ -40,8 +46,9 @@ const Section_2 = () => {
                 <h3>{res.body}</h3>
                 <h4>{res.title}</h4>
                 <div>
-
+                <Link to={res.uri}>
                 <button className="lss">{res.buttons} <BiArrowToRight/></button>
+                </Link>
                 </div>
             </div>
         ))

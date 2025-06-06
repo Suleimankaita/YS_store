@@ -69,31 +69,31 @@ const Layouts = () => {
     ref.current.classList.toggle("show")
   }
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    const msw=async()=>{
-      try{
+  //   const msw=async()=>{
+  //     try{
 
-        const res=await Notification.requestPermission()
+  //       const res=await Notification.requestPermission()
 
-        if(res==="granted"){
-          new Notification("YS Store",{
-            title:"YS notification",
-            body:"suleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys storesuleiman yusuf kaita damale ys store",
-            icon:logo,
+  //       if(res==="granted"){
+  //         new Notification("YS Store",{
+  //           title:"YS notification",
+  //           body:process.env.REACT_APP_BODY,
+  //           icon:logo,
             
-          })
-        }else if(res==="denied"){
-          console.log("denied")
-        }
+  //         })
+  //       }else if(res==="denied"){
+  //         console.log("denied")
+  //       }
 
-      }catch(err){
-        console.log(err)
-      }
-    }
-    msw()
+  //     }catch(err){
+  //       console.log(err)
+  //     }
+  //   }
+  //   msw()
 
-  },[])
+  // },[])
 
   
   return (
@@ -181,7 +181,7 @@ const Layouts = () => {
         not fout
         </div>
        } 
-      
+
       <Outlet />
       <Fotter  />
     </main>
