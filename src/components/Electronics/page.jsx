@@ -17,7 +17,7 @@ const page = () => {
 </div>
         
         <div className="bx" >
-        <div className="dot"></div>
+        <div className="dot"></div>         
       </div>
 
       </div>

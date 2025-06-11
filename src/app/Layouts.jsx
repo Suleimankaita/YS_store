@@ -132,8 +132,8 @@ const Layouts = () => {
                       </li>
                       <li className="desk"><Search {...{search,setSearch,search_btn}}/></li>
                       
-                      <li>
-                    {theames?<FaSun onClick={changes} />:<FaMoon onClick={changes} />}
+                      <li onClick={changes} className="theames">
+                    {theames?<FaSun  />:<FaMoon/>}
                   </li>
                       <li className="mob"><Search {...{search,setSearch,search_btn}} /></li>
        <nav style={theames&&window.innerWidth<=900?all:null}>

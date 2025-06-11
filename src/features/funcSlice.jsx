@@ -4,6 +4,7 @@ const initialState =
     {
         auth: null,
         user: null,
+        lengths:null,
         theame:JSON.parse(localStorage.getItem("theame"))||false,
         comment: 0,
         Cart:JSON.parse(localStorage.getItem("Cart"))||[],
@@ -27,6 +28,9 @@ const initialState =
         },
         setcom: (state, action) => {
             state.comment = action.payload;
+        },
+        addLength: (state, action) => {
+            state.lengths = action.payload;
         },
         Add_card:(state,action)=>{
            
@@ -141,9 +145,10 @@ const initialState =
       }
 });
 
-export const { cart_allChecked,setlogin, setuser,setcom ,changetheame, setlogout,Add_card,dec,deleteAll,dele,card_checked,save_like} =postslice.actions;
+export const { addLength,cart_allChecked,setlogin, setuser,setcom ,changetheame, setlogout,Add_card,dec,deleteAll,dele,card_checked,save_like} =postslice.actions;
 
 export const carts=(state=>state.auth.Cart)
 export const theame=(state=>state.auth.theame)
 export const commentss=(state=>state.auth.comment)
+export const lengths=(state=>state.auth.lengths)
 export default postslice.reducer;

@@ -24,7 +24,7 @@ const Theamess = () => {
         
 
         const all=theames?style:null
-    return {all};
+    return {all,theames};
 }
 
 export default Theamess

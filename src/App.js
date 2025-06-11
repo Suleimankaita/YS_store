@@ -28,6 +28,7 @@ import Video_call from './Investments/Connection/Video_call';
 import Investment from "./Investments/Investment"
 import Connection from './Investments/Connection/Page';
 import { io } from 'socket.io-client';
+import Admin from "./components/Admin/Admin"
 import { useEffect, useRef, useState } from 'react';
 function App() {
   
@@ -51,7 +52,10 @@ function App() {
         <Route index element={<Connection />}/>
         <Route path='Video_call/:id' element={<Video_call />}/>
         </Route>
+
       </Route>
+      <Route path={'Admin/:id'} element={<Admin/>} />
+
       <Route path={'All categories'}>
         <Route  index element={<Allcategories/>}/>
         <Route path={'Textles'} element={<Titles/>}/>

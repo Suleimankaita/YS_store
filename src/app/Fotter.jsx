@@ -75,14 +75,14 @@ const Fotter = () => {
         <div className="copy" style={all}>
             <ul style={all}>
 
-            <li>  <Link to={'/'}>&copy;YS Store ,All rights reserved </Link></li>
-            <li><Link to={'/'}>Privacy </Link></li>
-            <li><Link to={'/'}>Term of Services</Link></li>
-            <li><Link to={'/'}>Cokkie settings</Link></li>
+            <li>  <Link style={all} to={'/'}>&copy;YS Store ,All rights reserved </Link></li>
+            <li><Link style={all} to={'/'}>Privacy </Link></li>
+            <li><Link style={all} to={'/'}>Term of Services</Link></li>
+            <li><Link style={all} to={'/'}>Cokkie settings</Link></li>
             </ul>
         </div>
-        <div className="socials">
-           <ul>
+        <div style={all} className="socials">
+           <ul style={all}>
             <li><Link to={'/'}><FaFacebook style={{color:"rgb(10, 52, 237)"}} className='soc'/></Link></li>
             <li><Link to={"/"}><FaTwitter style={{color:" skyblue"}} className='soc'/></Link></li>
             <li><Link to={"/"}><FaInstagram style={{  color:"tomato"}} className='soc'/></Link></li>
